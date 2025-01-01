@@ -38,7 +38,6 @@ RegisterNetEvent('resetPlayerShotState')
 AddEventHandler('resetPlayerShotState', function()
     local playerId = source
     playerShooters[playerId] = nil
-    print("État de tir réinitialisé pour le joueur avec l'ID " .. tostring(playerId))
 end)
 
 function isPlayerShooter(playerId)
