@@ -12,7 +12,7 @@ AddEventHandler('playerShotWeapon', function(weaponHash)
     playerShooters[playerId] = true
 
     Citizen.CreateThread(function()
-        Citizen.Wait(5000)
+        Citizen.Wait(3600000)
         playerShooters[playerId] = nil
         print("Reset fait")
     end)

@@ -6,6 +6,30 @@
 --		close = true,
 --	},
 
+function IsPlayerNearWater()
+    local playerPed = PlayerPedId()
+    return IsEntityInWater(playerPed)
+end
+
+RegisterCommand('eau', function()
+    if IsPlayerNearWater() then
+        print("Vous êtes à proximité de l'eau.")
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', 'Vous êtes à proximité de l\'eau.' } })
+    else
+        print("Vous n'êtes pas à proximité de l'eau.")
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', 'Vous n\'êtes pas à proximité de l\'eau.' } })
+    end
+end, false)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(1000)
+        if IsPlayerNearWater() then
+            print("EAU")
+        end
+    end
+end)
+
 RegisterCommand('poudretest', function(source, args)
 local targetPlayerId = tonumber(args[1])
 if targetPlayerId then
