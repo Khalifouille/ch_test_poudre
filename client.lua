@@ -11,10 +11,16 @@ function IsPlayerNearWater()
     return IsEntityInWater(playerPed)
 end
 
-RegisterCommand('eau', function()
+RegisterCommand('selaver', function()
+    local playerPed = PlayerPedId()
     if IsPlayerNearWater() then
         print("Vous êtes à proximité de l'eau.")
-        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', 'Vous êtes à proximité de l\'eau.' } })
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Lavage des mains fait !' } })
+        TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
+        Citizen.Wait(5000)
+        ClearPedTasks(playerPed)
+        print("Envoi de l'événement resetPlayerShotState au serveur")
+        TriggerServerEvent('resetPlayerShotState')
     else
         print("Vous n'êtes pas à proximité de l'eau.")
         TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', 'Vous n\'êtes pas à proximité de l\'eau.' } })
@@ -31,20 +37,20 @@ Citizen.CreateThread(function()
 end)
 
 RegisterCommand('poudretest', function(source, args)
-local targetPlayerId = tonumber(args[1])
-if targetPlayerId then
-    TriggerServerEvent('checktir', targetPlayerId)
-else
-    print("Utilisation: /poudretest [playerId]")
-end
+    local targetPlayerId = tonumber(args[1])
+    if targetPlayerId then
+        TriggerServerEvent('checktir', targetPlayerId)
+    else
+        print("Utilisation: /poudretest [playerId]")
+    end
 end, false)
 
 Citizen.CreateThread(function()
-while true do
-    Citizen.Wait(0)
-    if IsPedShooting(PlayerPedId()) then
-        local weaponHash = GetSelectedPedWeapon(PlayerPedId())
-        TriggerServerEvent('playerShotWeapon', weaponHash)
+    while true do
+        Citizen.Wait(0)
+        if IsPedShooting(PlayerPedId()) then
+            local weaponHash = GetSelectedPedWeapon(PlayerPedId())
+            TriggerServerEvent('playerShotWeapon', weaponHash)
+        end
     end
-end
 end)
