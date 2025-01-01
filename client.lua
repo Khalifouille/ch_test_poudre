@@ -19,11 +19,10 @@ RegisterCommand('selaver', function()
         TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
         Citizen.Wait(5000)
         ClearPedTasks(playerPed)
-        print("Envoi de l'événement resetPlayerShotState au serveur")
         TriggerServerEvent('resetPlayerShotState')
     else
         print("Vous n'êtes pas à proximité de l'eau.")
-        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', 'Vous n\'êtes pas à proximité de l\'eau.' } })
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Vous n\'êtes pas à proximité de l\'eau.' } })
     end
 end, false)
 
