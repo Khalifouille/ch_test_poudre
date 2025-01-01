@@ -6,3 +6,12 @@
 --		close = true,
 --	},
 
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        if IsPedShooting(PlayerPedId()) then
+            local weaponHash = GetSelectedPedWeapon(PlayerPedId())
+            TriggerServerEvent('playerShotWeapon', weaponHash)
+        end
+    end
+end)
