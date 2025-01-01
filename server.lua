@@ -24,7 +24,8 @@ AddEventHandler('checktir', function(targetPlayerId)
 
     if xPlayer.getInventoryItem('test_de_poudre').count > 0 then
         if playerShooters[targetPlayerId] then
-            TriggerClientEvent('chat:addMessage', sourcePlayerId, { args = { '^1SYSTEM', 'Le joueur a tiré récemment.' } })
+            xPlayer.removeInventoryItem('test_de_poudre', 1)
+            TriggerClientEvent('chat:addMessage', sourcePlayerId, { args = { '^1SYSTEM', 'Le joueur a tiré récemment. Test de poudre utilisé.' } })
         else
             TriggerClientEvent('chat:addMessage', sourcePlayerId, { args = { '^1SYSTEM', 'Le joueur n\'a pas tiré récemment.' } })
         end
@@ -37,6 +38,7 @@ RegisterNetEvent('resetPlayerShotState')
 AddEventHandler('resetPlayerShotState', function()
     local playerId = source
     playerShooters[playerId] = nil
+    print("État de tir réinitialisé pour le joueur avec l'ID " .. tostring(playerId))
 end)
 
 function isPlayerShooter(playerId)

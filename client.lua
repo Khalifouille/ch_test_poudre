@@ -15,11 +15,12 @@ RegisterCommand('selaver', function()
     local playerPed = PlayerPedId()
     if IsPlayerNearWater() then
         print("Vous êtes à proximité de l'eau.")
-        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Lavage des mains fait !' } })
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Lavage des mains en cours' } })
         TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
         Citizen.Wait(5000)
         ClearPedTasks(playerPed)
         TriggerServerEvent('resetPlayerShotState')
+        TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Lavage des mains fini !' } })
     else
         print("Vous n'êtes pas à proximité de l'eau.")
         TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Vous n\'êtes pas à proximité de l\'eau.' } })
