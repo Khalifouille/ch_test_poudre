@@ -28,12 +28,7 @@ AddEventHandler('checktir', function(targetPlayerId)
     end
 
     local xPlayer = ESX.GetPlayerFromId(sourcePlayerId)
-
-    if xPlayer == nil then
-        print("xPlayer est nil pour l'ID de joueur: " .. tostring(sourcePlayerId))
-        return
-    end
-
+    
     if xPlayer.getInventoryItem('test_de_poudre').count > 0 then
         if playerShooters[targetPlayerId] then
             TriggerClientEvent('chat:addMessage', sourcePlayerId, { args = { '^1SYSTEM', 'Le joueur a tiré récemment.' } })
