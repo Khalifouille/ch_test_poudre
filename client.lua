@@ -27,15 +27,6 @@ RegisterCommand('selaver', function()
     end
 end, false)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1000)
-        if IsPlayerNearWater() then
-            print("EAU")
-        end
-    end
-end)
-
 RegisterCommand('poudretest', function(source, args)
     local targetPlayerId = tonumber(args[1])
     if targetPlayerId then
