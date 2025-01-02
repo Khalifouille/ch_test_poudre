@@ -1,10 +1,31 @@
--- Created item "Test de poudre" on ox_inventory 
--- 	["test_de_poudre"] = {
---		label = "Test de poudre",
---		weight = 1,
---		stack = false,
---		close = true,
---	},
+--["douille"] = {
+--    label = "Douille",
+--    weight = 1,
+--    stack = false,
+--   close = true,
+--    client = {
+--        image = 'douille.png',
+--    },
+--},
+--["test_de_poudre"] = {
+--    label = "Test de poudre",
+--    weight = 1,
+--    stack = false,
+--    close = true,
+--    client = {
+--        image = 'test_de_poudre.png',
+--    },
+--},
+
+--["savon"] = {
+--    label = "Savon",
+--    weight = 1,
+--   stack = false,
+--   close = true,
+--   client = {
+--        image = 'savon.png',
+--   },
+--},
 
 function IsPlayerNearWater()
     local playerPed = PlayerPedId()
