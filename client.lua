@@ -16,15 +16,14 @@
 --        image = 'test_de_poudre.png',
 --    },
 --},
-
 --["savon"] = {
 --    label = "Savon",
 --    weight = 1,
---   stack = false,
---   close = true,
---   client = {
+--    stack = false,
+--    close = true,
+--    client = {
 --        image = 'savon.png',
---   },
+--    },
 --},
 
 function IsPlayerNearWater()
