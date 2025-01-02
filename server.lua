@@ -42,7 +42,7 @@ AddEventHandler('checksavon', function()
 
     if xPlayer.getInventoryItem('savon').count > 0 then
         xPlayer.removeInventoryItem('savon', 1)
-        TriggerClientEvent('startHandWashing', sourcePlayerId)
+        TriggerClientEvent('lavagemain', sourcePlayerId)
     else
         TriggerClientEvent('chat:addMessage', sourcePlayerId, { args = { '^1SYSTEM', ' Vous n\'avez pas de savon.' } })
     end

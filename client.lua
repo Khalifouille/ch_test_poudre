@@ -40,8 +40,8 @@ RegisterCommand('selaver', function()
     end
 end, false)
 
-RegisterNetEvent('startHandWashing')
-AddEventHandler('startHandWashing', function()
+RegisterNetEvent('lavagemain')
+AddEventHandler('lavagemain', function()
     local playerPed = PlayerPedId()
     TriggerEvent('chat:addMessage', { args = { '^1SYSTEM', ' Lavage des mains en cours' } })
     TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
